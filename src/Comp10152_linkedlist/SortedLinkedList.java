@@ -98,7 +98,7 @@ public class SortedLinkedList
       // Find the predecessor of the element to add
       Node current = first;
       Node prev = null;
-      while (current != null) {
+      while (current != null && current.value.compareTo(element) < 0) {
         prev = current;
         current = current.next;
       }
@@ -109,6 +109,11 @@ public class SortedLinkedList
       {
             newNode.next = first;
             first = newNode;
+      }
+      else // New middle element 
+      {
+         prev.next = newNode;
+         newNode.next = current;
       }
     }
   }
